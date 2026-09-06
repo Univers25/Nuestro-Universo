@@ -983,3 +983,595 @@ button {
     }
 
 }
+/* =========================
+   OBSERVATORIO
+========================= */
+
+.observatorio {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(70, 50, 140, .25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(40, 70, 150, .12),
+            transparent 30%
+        ),
+        #03030a;
+}
+
+.observatorio-contenido {
+    width: 100%;
+    max-width: 900px;
+}
+
+.observatorio .etiqueta {
+    color: #858cff;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.observatorio h2 {
+    margin: 12px 0 8px;
+    letter-spacing: 5px;
+}
+
+.observatorio .subtitulo {
+    color: #8f8fa8;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   ESTADO
+========================= */
+
+.estado-observatorio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 20px;
+    margin: 30px 0;
+
+    border: 1px solid #403b75;
+    border-radius: 12px;
+
+    background: rgba(15, 15, 40, .6);
+}
+
+.punto-observatorio {
+    width: 10px;
+    height: 10px;
+
+    background: #9b7cff;
+    border-radius: 50%;
+
+    box-shadow: 0 0 10px #9b7cff;
+
+    animation: pulso 1.5s infinite;
+}
+
+.estado-observatorio div {
+    text-align: left;
+}
+
+.estado-observatorio div span {
+    display: block;
+
+    color: #77779a;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.estado-observatorio div strong {
+    color: #8d9dff;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.frecuencia-observatorio {
+    margin-left: auto;
+
+    color: #77779a;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   CIELO
+========================= */
+
+.cielo-observatorio {
+    position: relative;
+
+    width: min(850px, 90vw);
+    height: 430px;
+
+    margin: 30px auto 40px;
+
+    overflow: hidden;
+
+    border: 1px solid #34305f;
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(55, 45, 110, .18),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(90, 70, 160, .12),
+            transparent 30%
+        ),
+        #020208;
+
+    box-shadow:
+        0 0 30px rgba(80, 60, 180, .15),
+        inset 0 0 60px rgba(40, 30, 100, .2);
+}
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+.estrella {
+    position: absolute;
+
+    color: #d8dcff;
+
+    text-shadow:
+        0 0 6px #9ea8ff,
+        0 0 15px rgba(130, 140, 255, .7);
+
+    animation: brilloEstrella 3s infinite alternate;
+}
+
+.estrella-1 {
+    top: 12%;
+    left: 15%;
+    font-size: 18px;
+}
+
+.estrella-2 {
+    top: 25%;
+    left: 35%;
+    font-size: 25px;
+    animation-delay: .5s;
+}
+
+.estrella-3 {
+    top: 14%;
+    right: 20%;
+    font-size: 20px;
+    animation-delay: 1s;
+}
+
+.estrella-4 {
+    bottom: 20%;
+    left: 12%;
+    font-size: 22px;
+    animation-delay: 1.5s;
+}
+
+.estrella-5 {
+    bottom: 30%;
+    right: 28%;
+    font-size: 28px;
+    animation-delay: .8s;
+}
+
+.estrella-6 {
+    top: 55%;
+    left: 45%;
+    font-size: 16px;
+    animation-delay: 2s;
+}
+
+.estrella-7 {
+    bottom: 12%;
+    right: 12%;
+    font-size: 20px;
+    animation-delay: 1.2s;
+}
+
+@keyframes brilloEstrella {
+    from {
+        opacity: .35;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+/* =========================
+   OBJETOS CELESTES
+========================= */
+
+.objeto-celeste {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        transform .4s,
+        filter .4s;
+
+    user-select: none;
+}
+
+.objeto-celeste:hover {
+    transform: scale(1.15);
+    filter:
+        drop-shadow(0 0 15px rgba(150, 130, 255, .8));
+}
+
+/* SOL */
+
+.sol {
+    top: 45px;
+    right: 100px;
+
+    font-size: 65px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255, 200, 80, .6));
+}
+
+/* LUNA */
+
+.luna {
+    bottom: 70px;
+    left: 100px;
+
+    font-size: 60px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(180, 190, 255, .7));
+}
+
+/* SATURNO */
+
+.saturno {
+    top: 145px;
+    left: 45%;
+
+    font-size: 85px;
+
+    filter:
+        drop-shadow(0 0 18px rgba(170, 140, 255, .5));
+}
+/* MARTE */
+
+.marte {
+    top: 110px;
+    right: 90%;
+
+    font-size: 65px;
+
+    filter:
+        drop-shadow(0 0 18px rgba(170, 140, 255, .5));
+}
+/* NEBULOSA */
+.nebulosa {
+    top: 50%;
+    left: 50%;
+
+    font-size: 120px;
+
+    filter:
+        drop-shadow(0 0 20px rgba(150, 130, 255, .8));
+}
+/* AGUJERO NEGRO */
+
+.agujeronegro {
+    top: 130px;
+    left: 10%;
+
+    font-size: 75px;
+
+    filter:
+        drop-shadow(0 0 20px rgba(0, 0, 0, .8));
+}
+
+/* =========================
+   MENSAJE
+========================= */
+
+.mensaje-observatorio {
+    margin-top: 20px;
+    padding: 30px;
+
+    border: 1px solid #3d3b6e;
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35, 30, 75, .55),
+            rgba(10, 10, 30, .75)
+        );
+
+    text-align: center;
+
+    box-shadow:
+        0 0 25px rgba(80, 60, 160, .08);
+}
+
+.mensaje-observatorio .mini-etiqueta {
+    color: #858cff;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.mensaje-observatorio h3 {
+    margin: 12px 0 20px;
+    letter-spacing: 3px;
+}
+
+.mensaje-observatorio p {
+    color: #c0c0d0;
+    line-height: 1.7;
+    margin: 10px 0;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+
+#volverMenuObservatorio {
+    margin-top: 30px;
+}
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 650px) {
+
+    .cielo-observatorio {
+        height: 380px;
+    }
+
+    .estado-observatorio {
+        padding: 13px;
+    }
+
+    .frecuencia-observatorio {
+        display: none;
+    }
+
+    .sol {
+        right: 35px;
+        font-size: 50px;
+    }
+
+    .luna {
+        left: 35px;
+        font-size: 48px;
+    }
+
+    .saturno {
+        font-size: 65px;
+    }
+
+    .mensaje-observatorio {
+        padding: 22px;
+    }
+}
+/* =========================
+   VENTANA DE OBSERVACIÓN
+========================= */
+
+.ventana-observacion {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+}
+
+.ventana-observacion.mostrar {
+    display: flex;
+}
+
+.ventana-observacion-contenido {
+    position: relative;
+
+    width: min(650px, 100%);
+
+    padding: 40px 35px;
+
+    border: 1px solid rgba(150, 190, 255, 0.35);
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(90, 130, 255, 0.15),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(12, 20, 40, 0.98),
+            rgba(5, 10, 22, 0.98)
+        );
+
+    box-shadow:
+        0 0 40px rgba(80, 130, 255, 0.18),
+        inset 0 0 30px rgba(100, 150, 255, 0.04);
+
+    animation: aparecerObservacion 0.35s ease;
+}
+
+@keyframes aparecerObservacion {
+
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+.cerrar-observacion {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.05);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.cerrar-observacion:hover {
+    transform: rotate(90deg);
+
+    background: rgba(255,255,255,0.12);
+}
+
+.ventana-observacion h3 {
+    margin-top: 12px;
+
+    margin-bottom: 28px;
+
+    font-size: 30px;
+
+    letter-spacing: 3px;
+}
+
+.dato-cientifico,
+.mensaje-personal {
+    padding: 20px;
+
+    margin-top: 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(150, 190, 255, 0.15);
+
+    background: rgba(255,255,255,0.035);
+}
+
+.dato-cientifico span,
+.mensaje-personal span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.65;
+}
+
+.dato-cientifico p,
+.mensaje-personal p {
+    margin: 0;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+.mensaje-personal {
+    border-color: rgba(170, 130, 255, 0.22);
+}
+
+.mensaje-personal p {
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================
+   OBJETOS INTERACTIVOS
+========================= */
+
+.objeto-celeste {
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+.objeto-celeste:hover {
+    transform: scale(1.12);
+
+    filter:
+        brightness(1.25)
+        drop-shadow(0 0 15px rgba(255,255,255,0.6));
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 600px) {
+
+    .ventana-observacion {
+        padding: 15px;
+    }
+
+    .ventana-observacion-contenido {
+        padding: 35px 22px 25px;
+    }
+
+    .ventana-observacion h3 {
+        font-size: 24px;
+    }
+
+    .dato-cientifico p,
+    .mensaje-personal p {
+        font-size: 15px;
+    }
+
+}

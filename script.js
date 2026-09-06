@@ -7,17 +7,20 @@ const menu = document.getElementById("menu");
 const btnOrigen = document.getElementById("btnOrigen");
 const btnFrecuencia = document.getElementById("btnFrecuencia");
 const btnJaque = document.getElementById("btnJaque");
+const btnObservatorio = document.getElementById("btnObservatorio");
 
 const origen = document.getElementById("origen");
 const frecuencia = document.getElementById("frecuencia");
 const jaque = document.getElementById("jaque");
+const observatorio = document.getElementById("observatorio");
 
 const volverMenu = document.getElementById("volverMenu");
 const volverMenuFrecuencia =
     document.getElementById("volverMenuFrecuencia");
 const volverMenuJaque =
     document.getElementById("volverMenuJaque");
-
+const volverMenuObservatorio =
+    document.getElementById("volverMenuObservatorio");
 const audioEntrada =
     document.getElementById("audioEntrada");
 
@@ -1317,4 +1320,239 @@ volverMenuJaque.addEventListener("click", () => {
         top: 0,
         behavior: "smooth"
     });
+});
+/* =========================
+   OBSERVATORIO
+========================= */
+
+btnObservatorio.addEventListener("click", () => {
+
+    menu.classList.remove("mostrar");
+
+    observatorio.classList.add("mostrar");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+
+/* =========================
+   VOLVER DESDE OBSERVATORIO
+========================= */
+
+volverMenuObservatorio.addEventListener("click", () => {
+ observatorio.classList.remove("mostrar");
+ menu.classList.add("mostrar");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+/* =========================
+   OBJETOS DEL OBSERVATORIO
+========================= */
+
+const ventanaObservacion =
+    document.getElementById("ventanaObservacion");
+
+const cerrarObservacion =
+    document.getElementById("cerrarObservacion");
+
+const tituloObservacion =
+    document.getElementById("tituloObservacion");
+
+const datoObservacion =
+    document.getElementById("datoObservacion");
+
+const mensajeObservacion =
+    document.getElementById("mensajeObservacion");
+
+
+/* =========================
+   FUNCIÓN PARA MOSTRAR OBJETO
+========================= */
+
+function mostrarObservacion(titulo, dato, mensaje) {
+
+    tituloObservacion.textContent = titulo;
+
+    datoObservacion.textContent = dato;
+
+    mensajeObservacion.textContent = mensaje;
+
+    ventanaObservacion.classList.add("mostrar");
+
+}
+
+
+/* =========================
+   SOL
+========================= */
+
+document
+    .getElementById("objetosol")
+    .addEventListener("click", () => {
+
+        mostrarObservacion(
+
+              "☀️ SOL — Lo que permanece",
+
+            "El Sol lleva miles de millones de años iluminando el mismo universo.",
+
+            `Y supongo que hay algo bonito en eso: algunas cosas permanecen, incluso mientras todo lo demás cambia.
+            Nosotros también hemos cambiado. Han pasado días, meses, momentos buenos y otros no tanto. Hemos crecido, aprendido y seguido caminos que a veces se sienten demasiado separados.
+            Pero entre todo eso, hay algo que todavía me parece increíble:
+            sigues siendo tú y todo es a tu lado❤️.`
+        );
+
+    });
+
+
+/* =========================
+   LUNA
+========================= */
+
+document
+    .getElementById("objetoluna")
+    .addEventListener("click", () => {
+
+        mostrarObservacion(
+
+           "🌙 LUNA — La distancia",
+
+            "La Luna está lejos, pero sigue siendo la misma Luna que podemos mirar desde lugares distintos.",
+
+            `A veces pienso en eso cuando te extraño.
+            En que quizá estás mirando el cielo desde tu lado y yo desde el mío, separados por kilómetros que no puedo simplemente atravesar.
+            Y aunque no pueda estar ahí contigo, me gusta pensar que por unos segundos estamos viendo exactamente lo mismo.
+            Quizá el cielo sea la forma más bonita que encontró el universo para recordarme que estar lejos no siempre significa estar separados.🌙🫂`
+        );
+
+    });
+
+/* =========================
+   SATURNO
+========================= */
+
+document
+    .getElementById("objetosaturno")
+    .addEventListener("click", () => {
+
+        mostrarObservacion(
+
+             "🪐 SATURNO — Haber coincidido",
+
+            "Saturno tiene unos anillos formados por incontables fragmentos de hielo y roca que llevan millones de años girando a su alrededor.",
+
+            `Millones de años.
+            Y nosotros apenas llevamos una pequeña parte de una vida.
+            A veces me parece extraño pensar en todas las personas que existen, todos los lugares donde pudimos haber estado, todos los momentos que tuvieron que suceder para que nuestras historias terminaran cruzándose.
+            Entre un universo tan inmenso, me tocó encontrarte a ti.
+            Y no sé qué hicimos para merecer una coincidencia así, pero espero que nunca dejemos de cuidarla.🪐✨`
+        );
+
+    });
+/* =========================
+   MARTE
+========================= */
+document
+    .getElementById("objetomarte")
+    .addEventListener("click", () => {
+
+        mostrarObservacion(
+            "🔴 MARTE — Hasta dónde llegaríamos",
+
+            "Marte es un planeta rocoso y uno de los mundos más estudiados del Sistema Solar.",
+
+            `Quién sabe hasta dónde podríamos llegar si algún día pudiéramos viajar entre las estrellas.
+          A veces imagino cómo sería descubrir todos esos lugares contigo. Caminar por mundos que nunca hemos visto, 
+          mirar cielos completamente distintos y tenerte a mi lado mientras descubrimos algo nuevo.
+          Pero después pienso que, aunque no podamos viajar hasta las estrellas, ya estamos recorriendo algo juntos.
+          Hemos atravesado distancia, tiempo, días buenos y días difíciles, y aun así seguimos aquí.
+          Y quizá eso es lo que más me gusta de nosotros:
+          que no sé hasta dónde llegaremos, pero sí sé con quién quiero seguir descubriéndolo. 🔴❤️`
+        );
+
+    });
+/* =========================
+   NEBULOSA
+========================= */
+document
+    .getElementById("objetonebulosa")
+    .addEventListener("click", () => {
+
+        mostrarObservacion(
+
+             "🌌 NEBULOSA — Lo que construimos",
+
+            "Una nebulosa es una nube de gas y polvo donde, con el tiempo, pueden llegar a formase nuevas estrellas",
+
+            `Me gusta pensar que lo nuestro también se ha ido formando así.
+            Poco a poquito.
+            Con cada conversación, cada risa, cada noche hablando, cada recuerdo que hemos guardado y
+            también con esos momentos que no fueron tan fáciles.
+            Hemos cambiado desde que nos encontramos. Hemos aprendido cosas el uno del otro y también de nosotros mismos.
+            Y aunque nuestra historia todavía está lejos de estar terminada, cuando miro todo lo que hemos construido hasta ahora, 
+            me hace feliz pensar que todo empezó simplemente porque dos personas coincidieron.
+            No sé qué forma tendrá nuestro futuro ni cuántas cosas nos faltará por vivir.
+            Pero sí sé algo:
+            quiero seguir construyéndolo contigo. 🌌✨`
+        );
+
+    });
+/* =========================
+   AGUJERO NEGRO
+========================= */
+document
+    .getElementById("objetoagujeronegro")
+    .addEventListener("click", () => {
+
+        mostrarObservacion(
+
+             "🕳️ AGUJERO NEGRO — Entre tantos caminos",
+
+            "Un agujero negro es una región del espacio donde la gravedad es tan intensa, ni siquiera la luz, puede escapar de ella.",
+
+            `El universo todavía guarda preguntas que ni siquiera hemos logrado responder.
+            Y quizá por eso me gusta tanto mirar hacia él. Porque cuando pienso en lo inmenso que es, 
+            también pienso en lo pequeña que parece la posibilidad de que dos personas lleguen a encontrarse.
+            Entre tantos lugares, tantas personas, tantos caminos que pudieron ser diferentes...
+            terminé encontrándote a ti.
+            Y desde que llegaste a mi vida, hay algo que tengo muy claro: no quiero que la distancia me haga dudar de lo que siento por ti.
+            Confío en ti. Confío en lo que hemos construido y en todo lo que todavía nos queda por vivir.
+            No sé cuántos caminos nos esperan, ni cuánto tiempo tendremos que recorrerlos separados.
+            Pero si pudiera elegir una y otra vez entre todas las posibilidades de este universo, siempre elegiría la misma:
+            encontrarte.
+            Y seguir caminando contigo. 🖤🌌`
+        );
+
+    });
+/* =========================
+   CERRAR OBSERVACIÓN
+========================= */
+
+cerrarObservacion.addEventListener("click", () => {
+
+    ventanaObservacion.classList.remove("mostrar");
+
+});
+
+
+/* =========================
+   CERRAR AL TOCAR AFUERA
+========================= */
+
+ventanaObservacion.addEventListener("click", (evento) => {
+
+    if (evento.target === ventanaObservacion) {
+
+        ventanaObservacion.classList.remove("mostrar");
+
+    }
+
 });
