@@ -1219,73 +1219,88 @@ button {
     filter:
         drop-shadow(0 0 15px rgba(150, 130, 255, .8));
 }
+/* =========================
+   DISTRIBUCIÓN DEL CIELO
+========================= */
+
+.cielo-observatorio {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+}
+
+.objeto-celeste {
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+}
 
 /* SOL */
 
 .sol {
-    top: 45px;
-    right: 100px;
+    top: 55px;
+    right: 13%;
 
-    font-size: 65px;
+    font-size: 70px;
 
     filter:
-        drop-shadow(0 0 15px rgba(255, 200, 80, .6));
+        drop-shadow(0 0 18px rgba(255, 190, 50, .8));
 }
 
 /* LUNA */
 
 .luna {
     bottom: 70px;
-    left: 100px;
+    left: 20%;
 
-    font-size: 60px;
+    font-size: 65px;
 
     filter:
-        drop-shadow(0 0 15px rgba(180, 190, 255, .7));
+        drop-shadow(0 0 18px rgba(255, 220, 80, .75));
 }
 
 /* SATURNO */
 
 .saturno {
-    top: 145px;
-    left: 45%;
+    top: 135px;
+    left: 17%;
 
-    font-size: 85px;
+    font-size: 70px;
 
     filter:
-        drop-shadow(0 0 18px rgba(170, 140, 255, .5));
+        drop-shadow(0 0 14px rgba(180, 180, 255, .65));
 }
 /* MARTE */
 
 .marte {
-    top: 110px;
-    right: 90%;
+    top: 290px;
+    right: 43%;
 
-    font-size: 65px;
+    font-size: 58px;
 
     filter:
-        drop-shadow(0 0 18px rgba(170, 140, 255, .5));
+        drop-shadow(0 0 18px rgba(255, 80, 50, .7));
 }
 /* NEBULOSA */
 .nebulosa {
-    top: 50%;
-    left: 50%;
+    bottom:70px;
+    right: 24%;
 
-    font-size: 120px;
+    font-size: 68px;
 
     filter:
-        drop-shadow(0 0 20px rgba(150, 130, 255, .8));
+        drop-shadow(0 0 20px rgba(150, 100, 255, .35));
 }
 /* AGUJERO NEGRO */
 
 .agujeronegro {
-    top: 130px;
-    left: 10%;
+    top: 55px;
+    left: 45%;
 
-    font-size: 75px;
+    font-size: 58px;
 
     filter:
-        drop-shadow(0 0 20px rgba(0, 0, 0, .8));
+        drop-shadow(0 0 15px rgba(100, 80, 180, .8));
 }
 
 /* =========================
@@ -1345,7 +1360,7 @@ button {
 @media (max-width: 650px) {
 
     .cielo-observatorio {
-        height: 380px;
+        height: 430px;
     }
 
     .estado-observatorio {
@@ -1357,17 +1372,35 @@ button {
     }
 
     .sol {
-        right: 35px;
+        top:35px;
+        right: 30px;
         font-size: 50px;
     }
 
     .luna {
-        left: 35px;
+        top:45px;
+        right: 30px;
         font-size: 48px;
-    }
 
     .saturno {
-        font-size: 65px;
+        top:125px;
+        right: 25px;
+        font-size: 55px;
+    }
+    .Marte {
+        top:215px;
+        right: 43%;
+        font-size: 45px;
+    }
+    .Nebulosa {
+        top:45px;
+        right: 30px;
+        font-size: 52px;
+    }
+    .AgujeroNegro {
+        top:40px;
+        right: 42%;
+        font-size: 45px;
     }
 
     .mensaje-observatorio {
@@ -1574,4 +1607,5 @@ button {
         font-size: 15px;
     }
 
+}
 }
