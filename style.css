@@ -1213,6 +1213,123 @@ button {
 
     user-select: none;
 }
+/* =========================
+   MOVIMIENTO DE LOS OBJETOS
+========================= */
+
+.sol {
+    animation: flotarSol 5s ease-in-out infinite;
+}
+
+.luna {
+    animation: flotarLuna 6s ease-in-out infinite;
+}
+
+.saturno {
+    animation: flotarSaturno 7s ease-in-out infinite;
+}
+
+.marte {
+    animation: flotarMarte 5.5s ease-in-out infinite;
+}
+
+.nebulosa {
+    animation: flotarNebulosa 8s ease-in-out infinite;
+}
+
+.agujeronegro {
+    animation: flotarAgujero 6.5s ease-in-out infinite;
+}
+
+
+/* SOL */
+
+@keyframes flotarSol {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+
+/* LUNA */
+
+@keyframes flotarLuna {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+
+}
+
+
+/* SATURNO */
+
+@keyframes flotarSaturno {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-9px) rotate(2deg);
+    }
+
+}
+
+
+/* MARTE */
+
+@keyframes flotarMarte {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+}
+
+
+/* NEBULOSA */
+
+@keyframes flotarNebulosa {
+
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(8px) scale(1.04);
+    }
+
+}
+
+
+/* AGUJERO NEGRO */
+
+@keyframes flotarAgujero {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+}
 
 .objeto-celeste:hover {
     transform: scale(1.15);
@@ -1228,6 +1345,43 @@ button {
     min-height: 520px;
     overflow: hidden;
 }
+/* =========================
+   BRILLO AMBIENTAL DEL CIELO
+========================= */
+
+.cielo-observatorio::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            circle at 25% 30%,
+            rgba(100, 120, 255, .25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 75% 65%,
+            rgba(170, 100, 255, .20),
+            transparent 32%
+        );
+
+    animation: brilloCielo 7s ease-in-out infinite alternate;
+}
+
+@keyframes brilloCielo {
+    0% {
+        opacity: .5;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
 
 .objeto-celeste {
     position: absolute;
@@ -1240,7 +1394,6 @@ button {
 .sol {
     top: 55px;
     right: 13%;
-
     font-size: 70px;
 
     filter:
@@ -1252,7 +1405,6 @@ button {
 .luna {
     bottom: 70px;
     left: 20%;
-
     font-size: 65px;
 
     filter:
@@ -1264,9 +1416,7 @@ button {
 .saturno {
     top: 135px;
     left: 17%;
-
     font-size: 70px;
-
     filter:
         drop-shadow(0 0 14px rgba(180, 180, 255, .65));
 }
@@ -1275,7 +1425,6 @@ button {
 .marte {
     top: 290px;
     right: 43%;
-
     font-size: 58px;
 
     filter:
@@ -1285,7 +1434,6 @@ button {
 .nebulosa {
     bottom:70px;
     right: 24%;
-
     font-size: 68px;
 
     filter:
@@ -1296,12 +1444,322 @@ button {
 .agujeronegro {
     top: 55px;
     left: 45%;
-
     font-size: 58px;
 
     filter:
         drop-shadow(0 0 15px rgba(100, 80, 180, .8));
 }
+
+/* =========================
+   NUESTRA CONSTELACIÓN
+========================= */
+
+.constelacion-seccion {
+    margin-top: 55px;
+    padding: 35px 25px;
+    border: 1px solid rgba(150, 190, 255, .18);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(90, 100, 190, .12), transparent 45%),
+        linear-gradient(145deg, rgba(10, 17, 35, .92), rgba(4, 8, 18, .96));
+    box-shadow:
+        0 0 35px rgba(80, 120, 255, .08),
+        inset 0 0 35px rgba(100, 130, 255, .03);
+}
+
+.constelacion-seccion h3 {
+    margin: 12px 0 18px;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.constelacion-intro {
+    max-width: 750px;
+    margin: 8px auto;
+    line-height: 1.7;
+    font-size: 16px;
+    opacity: .85;
+}
+
+/* CIELO DE LA CONSTELACIÓN */
+
+.constelacion-cielo {
+    position: relative;
+    width: 100%;
+    max-width: 850px;
+    height: 500px;
+    margin: 35px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.05) 1px, transparent 2px),
+        radial-gradient(circle at 75% 35%, rgba(255,255,255,.05) 1px, transparent 2px),
+        radial-gradient(circle at 40% 75%, rgba(255,255,255,.04) 1px, transparent 2px),
+        linear-gradient(145deg, #050a18, #080d20);
+    border: 1px solid rgba(150, 180, 255, .14);
+}
+
+/* ESTRELLAS */
+
+.estrella-constelacion {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s ease;
+}
+
+.estrella-constelacion span {
+    font-size: 30px;
+    color: white;
+    text-shadow:
+        0 0 7px white,
+        0 0 18px rgba(120, 170, 255, .9);
+    transition: .3s ease;
+}
+/* =========================
+   DESTELLOS DE ESTRELLAS
+========================= */
+
+.estrella-constelacion span {
+    animation: destelloEstrella 3s ease-in-out infinite;
+}
+
+.estrella-c2 span {
+    animation-delay: .8s;
+}
+
+.estrella-c3 span {
+    animation-delay: 1.5s;
+}
+
+.estrella-c4 span {
+    animation-delay: 2.2s;
+}
+
+.estrella-c5 span {
+    animation-delay: .4s;
+}
+
+.estrella-c6 span {
+    animation-delay: 1.8s;
+}
+
+.estrella-c7 span {
+    animation-delay: 2.7s;
+}
+
+@keyframes destelloEstrella {
+
+    0%, 100% {
+        opacity: .65;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.18);
+    }
+
+}
+
+.estrella-constelacion small {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(235, 240, 255, .85);
+    white-space: nowrap;
+}
+
+.estrella-constelacion:hover span {
+    transform: scale(1.35);
+    text-shadow:
+        0 0 10px white,
+        0 0 28px rgba(130, 170, 255, 1);
+}
+
+/* POSICIONES */
+
+.estrella-c1 {
+    top: 20%;
+    left: 14%;
+}
+
+.estrella-c2 {
+    top: 12%;
+    left: 39%;
+}
+
+.estrella-c3 {
+    top: 24%;
+    left: 67%;
+}
+
+.estrella-c4 {
+    top: 52%;
+    left: 80%;
+}
+
+.estrella-c5 {
+    top: 72%;
+    left: 61%;
+}
+
+.estrella-c6 {
+    top: 78%;
+    left: 32%;
+}
+
+.estrella-c7 {
+    top: 48%;
+    left: 13%;
+}
+
+/* LÍNEAS */
+
+.lineas-constelacion {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.lineas-constelacion line {
+    stroke: rgba(130, 170, 255, .25);
+    stroke-width: 1;
+    stroke-dasharray: 5 7;
+    transition: .5s ease;
+}
+/* =========================
+   ESTRELLAS ACTIVAS
+========================= */
+
+.estrella-constelacion.activa span {
+    color: white;
+    transform: scale(1.35);
+    text-shadow:
+        0 0 8px white,
+        0 0 18px rgba(120, 170, 255, 1),
+        0 0 35px rgba(150, 120, 255, .9);
+}
+
+.estrella-constelacion.activa small {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(150, 180, 255, .7);
+}
+
+
+/* =========================
+   LÍNEAS ACTIVAS
+========================= */
+
+.lineas-constelacion line.activa {
+    stroke: rgba(180, 200, 255, .9);
+    stroke-width: 2;
+    stroke-dasharray: none;
+    filter:
+        drop-shadow(0 0 4px rgba(150, 180, 255, .8))
+        drop-shadow(0 0 10px rgba(120, 140, 255, .5));
+}
+
+
+/* =========================
+   CONSTELACIÓN COMPLETA
+========================= */
+
+.constelacion-cielo.completa {
+    box-shadow:
+        0 0 30px rgba(100, 130, 255, .18),
+        inset 0 0 50px rgba(120, 100, 255, .08);
+}
+
+.centro-constelacion.completa {
+    border-color: rgba(200, 190, 255, .8);
+
+    box-shadow:
+        0 0 20px rgba(150, 140, 255, .5),
+        0 0 45px rgba(110, 130, 255, .35),
+        inset 0 0 25px rgba(150, 130, 255, .15);
+
+    animation: pulsoConstelacion 2s ease-in-out infinite;
+}
+
+@keyframes pulsoConstelacion {
+
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+
+}
+
+/* CENTRO */
+
+.centro-constelacion {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    border: 1px solid rgba(180, 170, 255, .35);
+    background: radial-gradient(
+        circle,
+        rgba(100, 100, 190, .18),
+        rgba(5, 10, 25, .9)
+    );
+    box-shadow:
+        0 0 25px rgba(120, 130, 255, .15),
+        inset 0 0 20px rgba(130, 130, 255, .08);
+}
+
+.centro-constelacion span {
+    font-size: 20px;
+    text-shadow: 0 0 12px white;
+}
+
+.centro-constelacion strong {
+    font-size: 27px;
+    letter-spacing: 3px;
+}
+
+.centro-constelacion small {
+    font-size: 9px;
+    letter-spacing: 2px;
+    opacity: .7;
+}
+
+/* TRANSMISIÓN ESPECIAL */
+
+.mensaje-constelacion {
+    max-width: 700px;
+    margin: 25px auto 5px;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(170, 130, 255, .18);
+    background: rgba(255, 255, 255, .025);
+}
+
+.mensaje-constelacion p {
+    margin: 12px 0;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
 
 /* =========================
    MENSAJE
@@ -1381,6 +1839,7 @@ button {
         top:45px;
         right: 30px;
         font-size: 48px;
+    }
 
     .saturno {
         top:125px;
@@ -1608,4 +2067,127 @@ button {
     }
 
 }
+
+.constelacion-cielo {
+    height: 430px;
+}
+
+.estrella-constelacion small {
+    font-size: 10px;
+}
+
+.estrella-constelacion span {
+    font-size: 25px;
+}
+
+.estrella-c1 { top: 15%; left: 10%; }
+.estrella-c2 { top: 10%; left: 40%; }
+.estrella-c3 { top: 25%; left: 72%; }
+.estrella-c4 { top: 52%; left: 78%; }
+.estrella-c5 { top: 72%; left: 58%; }
+.estrella-c6 { top: 78%; left: 25%; }
+.estrella-c7 { top: 48%; left: 8%; }
+
+.centro-constelacion {
+    width: 85px;
+    height: 85px;
+}
+/* =========================
+   ESTRELLA FUGAZ
+========================= */
+
+.estrella-fugaz {
+    position: absolute;
+    top: 12%;
+    left: -120px;
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        white
+    );
+    border-radius: 50%;
+    opacity: 0;
+    transform: rotate(25deg);
+    filter:
+        drop-shadow(0 0 5px white)
+        drop-shadow(0 0 12px rgba(150, 180, 255, .9));
+    animation: estrellaFugaz 6s linear infinite;
+    z-index: 6;
+}
+
+@keyframes estrellaFugaz {
+
+    0% {
+        left: -120px;
+        top: 8%;
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    35% {
+        left: 110%;
+        top: 55%;
+        opacity: 1;
+    }
+
+    45% {
+        left: 120%;
+        top: 65%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 120%;
+        top: 65%;
+        opacity: 0;
+    }
+
+}
+/* =========================
+   ESTRELLAS DE FONDO
+========================= */
+
+.constelacion-cielo::before,
+.constelacion-cielo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(180,200,255,.6) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1.5px);
+    background-size:
+        95px 110px,
+        145px 130px,
+        180px 160px;
+    background-position:
+        10px 20px,
+        50px 70px,
+        100px 30px;
+    animation: estrellasFondo 8s ease-in-out infinite alternate;
+}
+
+.constelacion-cielo::after {
+    opacity: .35;
+    transform: scale(1.08);
+    animation-delay: 4s;
+}
+
+@keyframes estrellasFondo {
+
+    0% {
+        opacity: .35;
+    }
+
+    100% {
+        opacity: .8;
+    }
+
 }

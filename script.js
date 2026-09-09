@@ -1532,6 +1532,7 @@ document
         );
 
     });
+
 /* =========================
    CERRAR OBSERVACIÓN
 ========================= */
@@ -1556,3 +1557,174 @@ ventanaObservacion.addEventListener("click", (evento) => {
     }
 
 });
+/* =========================
+   NUESTRA CONSTELACIÓN
+========================= */
+
+const estrellasConstelacion =
+    document.querySelectorAll(".estrella-constelacion");
+
+const cieloConstelacion =
+    document.querySelector(".constelacion-cielo");
+
+const centroConstelacion =
+    document.querySelector(".centro-constelacion");
+
+
+/* =========================
+   CONEXIONES DE LA CONSTELACIÓN
+========================= */
+
+const conexionesConstelacion = [
+    ["estrella-c1", "estrella-c2", "linea1"],
+    ["estrella-c2", "estrella-c3", "linea2"],
+    ["estrella-c3", "estrella-c4", "linea3"],
+    ["estrella-c4", "estrella-c5", "linea4"],
+    ["estrella-c5", "estrella-c6", "linea5"],
+    ["estrella-c6", "estrella-c7", "linea6"],
+    ["estrella-c7", "estrella-c1", "linea7"]
+];
+
+
+/* =========================
+   ACTIVAR ESTRELLA
+========================= */
+
+estrellasConstelacion.forEach((estrella) => {
+
+    estrella.addEventListener("click", () => {
+
+        estrella.classList.add("activa");
+
+        actualizarConstelacion();
+
+    });
+
+});
+
+
+/* =========================
+   ACTUALIZAR CONEXIONES
+========================= */
+
+function actualizarConstelacion() {
+
+    conexionesConstelacion.forEach(
+        ([estrellaA, estrellaB, lineaID]) => {
+
+            const puntoA =
+                document.querySelector("." + estrellaA);
+
+            const puntoB =
+                document.querySelector("." + estrellaB);
+
+            const linea =
+                document.getElementById(lineaID);
+
+            if (
+                puntoA.classList.contains("activa") &&
+                puntoB.classList.contains("activa")
+            ) {
+
+                linea.classList.add("activa");
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       CONSTELACIÓN COMPLETA
+    ========================= */
+
+    if (estrellasConstelacion.length > 0) {
+
+        const todasActivas =
+            [...estrellasConstelacion]
+            .every(estrella =>
+                estrella.classList.contains("activa")
+            );
+
+        if (todasActivas) {
+
+            cieloConstelacion.classList.add("completa");
+
+            centroConstelacion.classList.add("completa");
+
+        }
+
+    }
+
+}
+/* =========================
+   ANIMACIÓN AUTOMÁTICA
+========================= */
+
+let indiceConstelacion = 0;
+
+function animarConstelacion() {
+
+    // Apagar todo primero
+    estrellasConstelacion.forEach(estrella => {
+        estrella.classList.remove("activa");
+    });
+
+    document.querySelectorAll(".lineas-constelacion line").forEach(linea => {
+        linea.classList.remove("activa");
+    });
+
+    cieloConstelacion.classList.remove("completa");
+    centroConstelacion.classList.remove("completa");
+
+    indiceConstelacion = 0;
+
+    const intervalo = setInterval(() => {
+
+        // Encender estrella actual
+        if (indiceConstelacion < estrellasConstelacion.length) {
+
+            estrellasConstelacion[indiceConstelacion]
+                .classList.add("activa");
+
+            // Conectar con la anterior
+            if (indiceConstelacion > 0) {
+                const linea =
+                    document.getElementById(
+                        "linea" + indiceConstelacion
+                    );
+
+                if (linea) {
+                    linea.classList.add("activa");
+                }
+            }
+
+            indiceConstelacion++;
+
+        } else {
+            // Última conexión:
+            // Nosotros → El comienzo
+            const ultimaLinea =
+                document.getElementById("linea7");
+
+            if (ultimaLinea) {
+                ultimaLinea.classList.add("activa");
+            }
+
+            // Constelación completa
+            cieloConstelacion.classList.add("completa");
+            centroConstelacion.classList.add("completa");
+
+            clearInterval(intervalo);
+
+            // Esperar y volver a comenzar
+            setTimeout(() => {
+                animarConstelacion();
+            }, 4000);
+        }
+
+    }, 850);
+}
+
+/* Iniciar automáticamente */
+animarConstelacion();
