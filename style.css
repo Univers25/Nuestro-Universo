@@ -1846,17 +1846,17 @@ button {
         right: 25px;
         font-size: 55px;
     }
-    .Marte {
+    .marte {
         top:215px;
         right: 43%;
         font-size: 45px;
     }
-    .Nebulosa {
+    .nebulosa {
         top:45px;
         right: 30px;
         font-size: 52px;
     }
-    .AgujeroNegro {
+    .agujeroNegro {
         top:40px;
         right: 42%;
         font-size: 45px;
@@ -1880,6 +1880,7 @@ button {
     justify-content: center;
 
     padding: 25px;
+    overflow-y: auto;
 
     background: rgba(0, 0, 0, 0.65);
 
@@ -1944,6 +1945,8 @@ button {
 
     width: 38px;
     height: 38px;
+
+    z-index: 10000;
 
     border: 1px solid rgba(255,255,255,0.2);
 
@@ -2068,29 +2071,37 @@ button {
 
 }
 
-.constelacion-cielo {
-    height: 430px;
-}
+/* =========================
+   CONSTELACIÓN — MÓVIL
+========================= */
 
-.estrella-constelacion small {
-    font-size: 10px;
-}
+@media (max-width: 650px) {
 
-.estrella-constelacion span {
-    font-size: 25px;
-}
+    .constelacion-cielo {
+        height: 430px;
+    }
 
-.estrella-c1 { top: 15%; left: 10%; }
-.estrella-c2 { top: 10%; left: 40%; }
-.estrella-c3 { top: 25%; left: 72%; }
-.estrella-c4 { top: 52%; left: 78%; }
-.estrella-c5 { top: 72%; left: 58%; }
-.estrella-c6 { top: 78%; left: 25%; }
-.estrella-c7 { top: 48%; left: 8%; }
+    .estrella-constelacion small {
+        font-size: 10px;
+    }
 
-.centro-constelacion {
-    width: 85px;
-    height: 85px;
+    .estrella-constelacion span {
+        font-size: 25px;
+    }
+
+    .estrella-c1 { top: 15%; left: 10%; }
+    .estrella-c2 { top: 10%; left: 40%; }
+    .estrella-c3 { top: 25%; left: 72%; }
+    .estrella-c4 { top: 52%; left: 78%; }
+    .estrella-c5 { top: 72%; left: 58%; }
+    .estrella-c6 { top: 78%; left: 25%; }
+    .estrella-c7 { top: 48%; left: 8%; }
+
+    .centro-constelacion {
+        width: 85px;
+        height: 85px;
+    }
+
 }
 /* =========================
    ESTRELLA FUGAZ
