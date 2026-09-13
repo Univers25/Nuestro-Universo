@@ -1726,5 +1726,818 @@ function animarConstelacion() {
     }, 850);
 }
 
+
 /* Iniciar automáticamente */
 animarConstelacion();
+/* =========================
+       02 AÑOS
+========================= */
+
+const btnDosAnios =
+    document.getElementById("btnDosAnios");
+
+const dosAnios =
+    document.getElementById("dosAnios");
+
+const volverMenuDosAnios =
+    document.getElementById("volverMenuDosAnios");
+
+
+/* =========================
+   ENTRAR A 02 AÑOS
+========================= */
+
+btnDosAnios.addEventListener("click", () => {
+
+    menu.classList.remove("mostrar");
+
+    dosAnios.classList.add("mostrar");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+
+/* =========================
+   VOLVER DESDE 02 AÑOS
+========================= */
+
+volverMenuDosAnios.addEventListener("click", () => {
+
+    dosAnios.classList.remove("mostrar");
+
+    menu.classList.add("mostrar");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+/* =========================
+       SOPA DE LETRAS
+========================= */
+
+const contenedorPalabras =
+    document.getElementById("palabrasSopa");
+
+const tableroSopa =
+    document.getElementById("sopaTablero");
+
+const mensajeSopa =
+    document.getElementById("mensajeSopa");
+
+
+/*
+   Solo iniciar la sopa si sus elementos
+   realmente existen en la página.
+*/
+
+if (contenedorPalabras && tableroSopa && mensajeSopa) {
+
+    const palabrasSopa = [
+        "NOSOTROS",
+        "AMOR",
+        "DISTANCIA",
+        "RECUERDOS",
+        "RISAS",
+        "LLAMADAS",
+        "AUDIOS",
+        "ABRAZO",
+        "HISTORIA",
+        "ENCUENTRO",
+
+        "GALAXY",
+        "MIKU",
+        "BOYWHITUKE",
+        "KEVINKAARL",
+        "MUSICA",
+        "WALLE",
+        "PIBBLE",
+        "PATO",
+
+        "AJEDREZ",
+        "JAQUE",
+        "REY",
+        "DAMA",
+        "CABALLO",
+        "TORRE",
+        "ALFIL",
+
+        "NEPTUNO",
+        "SATURNO",
+        "MARTE",
+        "JUPITER",
+        "VENUS",
+        "URANO",
+        "MERCURIO",
+        "LUNA",
+        "SOL",
+        "ESTRELLA",
+        "GALAXIA",
+        "NEBULOSA",
+        "COMETA",
+        "UNIVERSO",
+        "BIGBANG"
+    ];
+
+
+    /* =========================
+       MOSTRAR PALABRAS
+    ========================= */
+
+    palabrasSopa.forEach(palabra => {
+
+        const elemento =
+            document.createElement("span");
+
+        elemento.classList.add("palabra-sopa");
+
+        elemento.textContent = palabra;
+
+        elemento.dataset.palabra = palabra;
+
+        contenedorPalabras.appendChild(elemento);
+
+    });
+
+
+    /* =========================
+       CONFIGURACIÓN
+    ========================= */
+
+    const TAMANO_TABLERO = 15;
+
+    const letras =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    let tablero = [];
+
+    let palabrasColocadas = [];
+
+
+    /* =========================
+       CREAR TABLERO
+    ========================= */
+
+    function crearTableroVacio() {
+
+        tablero = [];
+
+        for (
+            let fila = 0;
+            fila < TAMANO_TABLERO;
+            fila++
+        ) {
+
+            tablero[fila] = [];
+
+            for (
+                let columna = 0;
+                columna < TAMANO_TABLERO;
+                columna++
+            ) {
+
+                tablero[fila][columna] = "";
+
+            }
+        }
+    }
+
+
+    /* =========================
+       DIRECCIONES
+    ========================= */
+
+    const direcciones = [
+        [0, 1],
+        [1, 0],
+        [0, -1],
+        [-1, 0],
+        [1, 1],
+        [1, -1],
+        [-1, 1],
+        [-1, -1]
+    ];
+
+
+    /* =========================
+       COMPROBAR SI CABE
+    ========================= */
+
+    function puedeColocar(
+        palabra,
+        fila,
+        columna,
+        df,
+        dc
+    ) {
+
+        for (
+            let i = 0;
+            i < palabra.length;
+            i++
+        ) {
+
+            const nuevaFila =
+                fila + df * i;
+
+            const nuevaColumna =
+                columna + dc * i;
+
+
+            if (
+                nuevaFila < 0 ||
+                nuevaFila >= TAMANO_TABLERO ||
+                nuevaColumna < 0 ||
+                nuevaColumna >= TAMANO_TABLERO
+            ) {
+
+                return false;
+
+            }
+
+
+            const actual =
+                tablero[nuevaFila][nuevaColumna];
+
+
+            if (
+                actual !== "" &&
+                actual !== palabra[i]
+            ) {
+
+                return false;
+
+            }
+        }
+
+        return true;
+    }
+
+
+    /* =========================
+       COLOCAR PALABRA
+    ========================= */
+
+    function colocarPalabra(palabra) {
+
+        const intentosMaximos = 500;
+
+        for (
+            let intento = 0;
+            intento < intentosMaximos;
+            intento++
+        ) {
+
+            const direccion =
+                direcciones[
+                    Math.floor(
+                        Math.random() *
+                        direcciones.length
+                    )
+                ];
+
+
+            const fila =
+                Math.floor(
+                    Math.random() *
+                    TAMANO_TABLERO
+                );
+
+
+            const columna =
+                Math.floor(
+                    Math.random() *
+                    TAMANO_TABLERO
+                );
+
+
+            if (
+                puedeColocar(
+                    palabra,
+                    fila,
+                    columna,
+                    direccion[0],
+                    direccion[1]
+                )
+            ) {
+
+                const posiciones = [];
+
+
+                for (
+                    let i = 0;
+                    i < palabra.length;
+                    i++
+                ) {
+
+                    const nuevaFila =
+                        fila + direccion[0] * i;
+
+                    const nuevaColumna =
+                        columna + direccion[1] * i;
+
+
+                    tablero[nuevaFila][nuevaColumna] =
+                        palabra[i];
+
+
+                    posiciones.push(
+                        `${nuevaFila}-${nuevaColumna}`
+                    );
+
+                }
+
+
+                palabrasColocadas.push({
+                    palabra: palabra,
+                    posiciones: posiciones
+                });
+
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    /* =========================
+       RELLENAR TABLERO
+    ========================= */
+
+    function rellenarTablero() {
+
+        for (
+            let fila = 0;
+            fila < TAMANO_TABLERO;
+            fila++
+        ) {
+
+            for (
+                let columna = 0;
+                columna < TAMANO_TABLERO;
+                columna++
+            ) {
+
+                if (
+                    tablero[fila][columna] === ""
+                ) {
+
+                    tablero[fila][columna] =
+                        letras[
+                            Math.floor(
+                                Math.random() *
+                                letras.length
+                            )
+                        ];
+                }
+            }
+        }
+    }
+
+
+    /* =========================
+       MOSTRAR TABLERO
+    ========================= */
+
+    function mostrarTablero() {
+
+        tableroSopa.innerHTML = "";
+
+        tableroSopa.style.gridTemplateColumns =
+            `repeat(${TAMANO_TABLERO}, 1fr)`;
+
+
+        for (
+            let fila = 0;
+            fila < TAMANO_TABLERO;
+            fila++
+        ) {
+
+            for (
+                let columna = 0;
+                columna < TAMANO_TABLERO;
+                columna++
+            ) {
+
+                const celda =
+                    document.createElement("div");
+
+
+                celda.classList.add("letra-sopa");
+
+                celda.textContent =
+                    tablero[fila][columna];
+
+                celda.dataset.fila = fila;
+
+                celda.dataset.columna = columna;
+
+
+                tableroSopa.appendChild(celda);
+            }
+        }
+    }
+
+
+    /* =========================
+       INICIAR SOPA
+    ========================= */
+
+    function iniciarSopa() {
+
+        crearTableroVacio();
+
+        palabrasColocadas = [];
+
+
+        palabrasSopa
+            .slice()
+            .sort(
+                (a, b) =>
+                    b.length - a.length
+            )
+            .forEach(palabra => {
+
+                colocarPalabra(palabra);
+
+            });
+
+
+        rellenarTablero();
+
+        mostrarTablero();
+    }
+
+
+    iniciarSopa();
+
+}
+/* =========================
+   SELECCIÓN DE PALABRAS
+========================= */
+
+let seleccionando = false;
+let celdasSeleccionadas = [];
+
+
+/* =========================
+   LIMPIAR SELECCIÓN
+========================= */
+
+function limpiarSeleccion() {
+
+    celdasSeleccionadas.forEach(celda => {
+
+        // NO borrar las palabras que ya fueron encontradas
+        if (!celda.classList.contains("encontrada")) {
+            celda.classList.remove("seleccionada");
+        }
+
+    });
+
+    celdasSeleccionadas = [];
+}
+
+
+/* =========================
+   AGREGAR CELDA
+========================= */
+
+function agregarCelda(celda) {
+
+    if (!celda) return;
+
+    // Si esta letra ya pertenece a una palabra encontrada,
+    // no se puede volver a seleccionar
+    if (celda.classList.contains("encontrada")) {
+        return;
+    }
+
+    if (!celdasSeleccionadas.includes(celda)) {
+
+        celdasSeleccionadas.push(celda);
+
+        celda.classList.add("seleccionada");
+    }
+}
+
+
+/* =========================
+   OBTENER CELDA
+========================= */
+
+function obtenerCeldaDesdeEvento(evento) {
+
+    let elemento;
+
+    if (evento.touches) {
+
+        elemento = document.elementFromPoint(
+            evento.touches[0].clientX,
+            evento.touches[0].clientY
+        );
+
+    } else {
+
+        elemento = evento.target;
+    }
+
+
+    if (
+        elemento &&
+        elemento.classList.contains("letra-sopa")
+    ) {
+
+        return elemento;
+    }
+
+    return null;
+}
+
+
+/* =========================
+   COMENZAR SELECCIÓN
+========================= */
+
+function comenzarSeleccion(evento) {
+
+    const celda =
+        obtenerCeldaDesdeEvento(evento);
+
+    if (!celda) return;
+
+    // No iniciar una selección sobre una letra
+    // que ya pertenece a una palabra encontrada
+    if (celda.classList.contains("encontrada")) {
+        return;
+    }
+
+    seleccionando = true;
+
+    // Limpia solamente la selección temporal anterior
+    limpiarSeleccion();
+
+    agregarCelda(celda);
+}
+
+
+/* =========================
+   MOVER SOBRE EL TABLERO
+========================= */
+
+function moverSeleccion(evento) {
+
+    if (!seleccionando) return;
+
+    const celda =
+        obtenerCeldaDesdeEvento(evento);
+
+    if (!celda) return;
+
+    agregarCelda(celda);
+}
+
+
+/* =========================
+   TERMINAR SELECCIÓN
+========================= */
+
+function terminarSeleccion() {
+
+    if (!seleccionando) return;
+
+    seleccionando = false;
+
+    comprobarPalabra();
+}
+
+
+/* =========================
+   COMPROBAR PALABRA
+========================= */
+
+function comprobarPalabra() {
+
+    if (celdasSeleccionadas.length < 2) {
+
+        limpiarSeleccion();
+
+        return;
+    }
+
+
+    const posicionesSeleccionadas =
+        celdasSeleccionadas.map(celda => {
+
+            return `${celda.dataset.fila}-${celda.dataset.columna}`;
+
+        });
+
+
+    const palabraEncontrada =
+        palabrasColocadas.find(objeto => {
+
+            // Si ya fue encontrada, ignorarla
+            if (objeto.encontrada) {
+                return false;
+            }
+
+            const posiciones =
+                objeto.posiciones;
+
+
+            const mismaDireccion =
+                posiciones.every(
+                    posicion =>
+                        posicionesSeleccionadas
+                            .includes(posicion)
+                );
+
+
+            const mismaCantidad =
+                posiciones.length ===
+                posicionesSeleccionadas.length;
+
+
+            if (
+                mismaDireccion &&
+                mismaCantidad
+            ) {
+
+                const directa =
+                    posiciones.every(
+                        (posicion, indice) =>
+                            posicion ===
+                            posicionesSeleccionadas[indice]
+                    );
+
+
+                const inversa =
+                    posiciones
+                        .slice()
+                        .reverse()
+                        .every(
+                            (posicion, indice) =>
+                                posicion ===
+                                posicionesSeleccionadas[indice]
+                        );
+
+
+                return directa || inversa;
+            }
+
+
+            return false;
+
+        });
+
+
+    if (palabraEncontrada) {
+
+        marcarPalabraEncontrada(
+            palabraEncontrada
+        );
+
+    } else {
+
+        // Si no era una palabra correcta,
+        // solamente desaparece la selección temporal
+        limpiarSeleccion();
+    }
+}
+
+
+/* =========================
+   MARCAR PALABRA
+========================= */
+
+function marcarPalabraEncontrada(objeto) {
+
+    celdasSeleccionadas.forEach(celda => {
+
+        celda.classList.remove(
+            "seleccionada"
+        );
+
+        celda.classList.add(
+            "encontrada"
+        );
+
+    });
+
+
+    const elementoPalabra =
+        document.querySelector(
+            `.palabra-sopa[data-palabra="${objeto.palabra}"]`
+        );
+
+
+    if (elementoPalabra) {
+
+        elementoPalabra.classList.add(
+            "encontrada"
+        );
+
+    }
+
+
+    objeto.encontrada = true;
+
+    celdasSeleccionadas = [];
+
+
+    comprobarTodasEncontradas();
+}
+
+
+/* =========================
+   COMPROBAR LAS 40
+========================= */
+
+function comprobarTodasEncontradas() {
+
+    const encontradas =
+        palabrasColocadas.filter(
+            objeto => objeto.encontrada
+        ).length;
+
+
+    if (
+        encontradas ===
+        palabrasSopa.length
+    ) {
+
+        desbloquearMensajeSopa();
+
+    }
+}
+
+
+/* =========================
+   DESBLOQUEAR MENSAJE
+========================= */
+
+function desbloquearMensajeSopa() {
+
+    mensajeSopa.classList.add(
+        "mostrar"
+    );
+
+    setTimeout(() => {
+
+        mensajeSopa.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 300);
+}
+
+
+/* =========================
+   EVENTOS
+========================= */
+
+tableroSopa.addEventListener(
+    "mousedown",
+    comenzarSeleccion
+);
+
+tableroSopa.addEventListener(
+    "mousemove",
+    moverSeleccion
+);
+
+document.addEventListener(
+    "mouseup",
+    terminarSeleccion
+);
+
+
+/* =========================
+   EVENTOS PARA CELULAR
+========================= */
+
+tableroSopa.addEventListener(
+    "touchstart",
+    comenzarSeleccion,
+    { passive: false }
+);
+
+tableroSopa.addEventListener(
+    "touchmove",
+    moverSeleccion,
+    { passive: false }
+);
+
+document.addEventListener(
+    "touchend",
+    terminarSeleccion
+);
