@@ -3507,3 +3507,447 @@ button {
         font-size: 15px;
     }
 }
+/* =========================
+   RECUERDOS
+========================= */
+
+.recuerdos {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 70px 20px 50px;
+    overflow: hidden;
+}
+
+.recuerdos::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(70, 120, 255, .13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(150, 90, 255, .12),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 85%,
+            rgba(60, 100, 220, .09),
+            transparent 35%
+        );
+
+    animation: brilloRecuerdos 9s ease-in-out infinite alternate;
+}
+
+@keyframes brilloRecuerdos {
+
+    0% {
+        opacity: .55;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.recuerdos-contenido {
+    position: relative;
+    z-index: 2;
+
+    width: min(850px, 100%);
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.recuerdos h2 {
+    margin: 12px 0 8px;
+
+    font-size: 38px;
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px rgba(130, 160, 255, .45),
+        0 0 25px rgba(120, 100, 255, .25);
+}
+
+.recuerdos .subtitulo {
+    margin-bottom: 35px;
+
+    font-size: 15px;
+    letter-spacing: 4px;
+
+    opacity: .7;
+}
+
+
+/* =========================
+   ESTADO DEL ARCHIVO
+========================= */
+
+.estado-recuerdos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 45px;
+    padding: 15px 20px;
+
+    border: 1px solid rgba(120, 160, 255, .20);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(40, 80, 150, .10),
+            rgba(100, 70, 180, .06),
+            transparent
+        );
+
+    box-shadow:
+        inset 0 0 20px rgba(80, 120, 255, .025),
+        0 0 20px rgba(60, 100, 220, .05);
+
+    text-align: left;
+}
+
+.punto-recuerdos {
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: rgba(130, 190, 255, .95);
+
+    box-shadow:
+        0 0 7px rgba(100, 170, 255, .9),
+        0 0 15px rgba(80, 140, 255, .6);
+
+    animation: pulsoRecuerdos 2s ease-in-out infinite;
+}
+
+@keyframes pulsoRecuerdos {
+
+    0%, 100% {
+        opacity: .55;
+        transform: scale(.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+.estado-recuerdos div {
+    flex: 1;
+}
+
+.estado-recuerdos div span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    opacity: .55;
+}
+
+.estado-recuerdos strong {
+    display: block;
+
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+
+.frecuencia-recuerdos {
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    opacity: .6;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.recuerdos-intro {
+    margin-bottom: 40px;
+}
+
+.recuerdos-intro h3 {
+    margin: 12px 0 18px;
+
+    font-size: 27px;
+    letter-spacing: 2.5px;
+
+    text-shadow:
+        0 0 10px rgba(130, 160, 255, .45);
+}
+
+.recuerdos-intro p {
+    max-width: 700px;
+
+    margin: 10px auto;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    opacity: .78;
+}
+
+
+/* =========================
+   TARJETAS DE RECUERDOS
+========================= */
+
+.recuerdo-card {
+    position: relative;
+
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+
+    margin: 22px 0;
+
+    border: 1px solid rgba(130, 165, 255, .18);
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(80, 120, 255, .12),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(10, 18, 38, .95),
+            rgba(4, 9, 22, .98)
+        );
+
+    box-shadow:
+        0 0 25px rgba(60, 100, 220, .06),
+        inset 0 0 30px rgba(90, 120, 255, .025);
+
+    overflow: hidden;
+
+    text-align: left;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.recuerdo-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(130, 170, 255, .40);
+
+    box-shadow:
+        0 0 25px rgba(70, 120, 255, .13),
+        0 0 50px rgba(100, 80, 220, .06),
+        inset 0 0 30px rgba(100, 130, 255, .04);
+}
+
+
+/* =========================
+   NÚMERO DEL RECUERDO
+========================= */
+
+.recuerdo-numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 95px;
+    min-width: 95px;
+
+    border-right: 1px solid rgba(130, 165, 255, .15);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(90, 130, 255, .13),
+            transparent 65%
+        );
+
+    color: rgba(180, 200, 255, .85);
+
+    font-size: 28px;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px rgba(100, 150, 255, .5);
+}
+
+
+/* =========================
+   INFORMACIÓN
+========================= */
+
+.recuerdo-info {
+    flex: 1;
+
+    padding: 27px 30px;
+}
+
+.recuerdo-info h3 {
+    margin: 9px 0 10px;
+
+    font-size: 22px;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 9px rgba(130, 160, 255, .35);
+}
+
+.recuerdo-info p {
+    max-width: 600px;
+
+    margin: 0 0 20px;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    opacity: .72;
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+.boton-recuerdo {
+    padding: 11px 20px;
+
+    border: 1px solid rgba(90, 160, 255, .30);
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 30, 60, .95),
+            rgba(5, 12, 28, .98)
+        );
+
+    color: white;
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(50, 130, 255, .06);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.boton-recuerdo:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(70, 170, 255, .80);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 40, 80, .98),
+            rgba(6, 14, 32, 1)
+        );
+
+    box-shadow:
+        0 0 12px rgba(60, 150, 255, .45),
+        0 0 25px rgba(50, 120, 255, .20);
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 650px) {
+
+    .recuerdos {
+        padding: 55px 15px 40px;
+    }
+
+    .recuerdos h2 {
+        font-size: 30px;
+        letter-spacing: 3px;
+    }
+
+    .recuerdos .subtitulo {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+    }
+
+    .estado-recuerdos {
+        padding: 13px;
+    }
+
+    .frecuencia-recuerdos {
+        display: none;
+    }
+
+    .recuerdos-intro h3 {
+        font-size: 22px;
+    }
+
+    .recuerdos-intro p {
+        font-size: 14px;
+    }
+
+    .recuerdo-card {
+        flex-direction: column;
+    }
+
+    .recuerdo-numero {
+        width: 100%;
+        min-width: 0;
+        height: 55px;
+
+        border-right: none;
+        border-bottom: 1px solid rgba(130, 165, 255, .15);
+    }
+
+    .recuerdo-info {
+        padding: 23px 20px;
+    }
+
+    .recuerdo-info h3 {
+        font-size: 19px;
+    }
+
+    .recuerdo-info p {
+        font-size: 13px;
+    }
+
+    .boton-recuerdo {
+        width: 100%;
+    }
+}

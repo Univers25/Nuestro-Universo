@@ -1778,7 +1778,100 @@ volverMenuDosAnios.addEventListener("click", () => {
 
 });
 /* =========================
-       SOPA DE LETRAS
+   RECUERDOS
+========================= */
+
+const btnRecuerdos =
+    document.getElementById("btnRecuerdos");
+
+const recuerdos =
+    document.getElementById("recuerdos");
+
+const volverMenuRecuerdos =
+    document.getElementById("volverMenuRecuerdos");
+
+
+/* =========================
+   ENTRAR A RECUERDOS
+========================= */
+
+if (btnRecuerdos && recuerdos) {
+
+    btnRecuerdos.addEventListener("click", () => {
+
+        menu.classList.remove("mostrar");
+
+        recuerdos.classList.add("mostrar");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
+
+
+/* =========================
+   VOLVER DESDE RECUERDOS
+========================= */
+
+if (volverMenuRecuerdos) {
+
+    volverMenuRecuerdos.addEventListener("click", () => {
+
+        recuerdos.classList.remove("mostrar");
+
+        menu.classList.add("mostrar");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
+/* =========================
+   RECUERDO 01
+========================= */
+
+const abrirRecuerdo01 =
+    document.getElementById("abrirRecuerdo01");
+
+const ventanaRecuerdo01 =
+    document.getElementById("ventanaRecuerdo01");
+
+const cerrarRecuerdo01 =
+    document.getElementById("cerrarRecuerdo01");
+
+
+if (
+    abrirRecuerdo01 &&
+    ventanaRecuerdo01
+) {
+
+    abrirRecuerdo01.addEventListener("click", () => {
+
+        ventanaRecuerdo01.classList.add("mostrar");
+
+    });
+
+}
+
+
+if (cerrarRecuerdo01) {
+
+    cerrarRecuerdo01.addEventListener("click", () => {
+
+        ventanaRecuerdo01.classList.remove("mostrar");
+
+    });
+
+}
+/* =========================
+   SOPA DE LETRAS
 ========================= */
 
 const contenedorPalabras =
@@ -1791,62 +1884,42 @@ const mensajeSopa =
     document.getElementById("mensajeSopa");
 
 
-/*
-   Solo iniciar la sopa si sus elementos
-   realmente existen en la página.
-*/
+/* =========================
+   INICIAR SOLO SI EXISTE
+========================= */
 
-if (contenedorPalabras && tableroSopa && mensajeSopa) {
-
-    const palabrasSopa = [
-        "NOSOTROS",
-        "AMOR",
-        "DISTANCIA",
-        "RECUERDOS",
-        "RISAS",
-        "LLAMADAS",
-        "AUDIOS",
-        "ABRAZO",
-        "HISTORIA",
-        "ENCUENTRO",
-
-        "GALAXY",
-        "MIKU",
-        "BOYWHITUKE",
-        "KEVINKAARL",
-        "MUSICA",
-        "WALLE",
-        "PIBBLE",
-        "PATO",
-
-        "AJEDREZ",
-        "JAQUE",
-        "REY",
-        "DAMA",
-        "CABALLO",
-        "TORRE",
-        "ALFIL",
-
-        "NEPTUNO",
-        "SATURNO",
-        "MARTE",
-        "JUPITER",
-        "VENUS",
-        "URANO",
-        "MERCURIO",
-        "LUNA",
-        "SOL",
-        "ESTRELLA",
-        "GALAXIA",
-        "NEBULOSA",
-        "COMETA",
-        "UNIVERSO",
-        "BIGBANG"
-    ];
-
+if (
+    contenedorPalabras &&
+    tableroSopa &&
+    mensajeSopa
+) {
 
     /* =========================
-       MOSTRAR PALABRAS
+       PALABRAS
+    ========================= */
+
+    const palabrasSopa = [
+    "NOSOTROS",
+    "AMOR",
+    "DISTANCIA",
+    "RECUERDOS",
+    "RISAS",
+    "LLAMADAS",
+    "ABRAZO",
+    "ENCUENTRO",
+
+    "MIKU",
+    "MUSICA",
+    "WALLE",
+    "PIBBLE",
+    "PATO",
+
+    "SATURNO",
+    "UNIVERSO"
+];
+
+    /* =========================
+       MOSTRAR LISTA
     ========================= */
 
     palabrasSopa.forEach(palabra => {
@@ -1854,13 +1927,17 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
         const elemento =
             document.createElement("span");
 
-        elemento.classList.add("palabra-sopa");
+        elemento.classList.add(
+            "palabra-sopa"
+        );
 
         elemento.textContent = palabra;
 
         elemento.dataset.palabra = palabra;
 
-        contenedorPalabras.appendChild(elemento);
+        contenedorPalabras.appendChild(
+            elemento
+        );
 
     });
 
@@ -1880,7 +1957,7 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
 
 
     /* =========================
-       CREAR TABLERO
+       CREAR TABLERO VACÍO
     ========================= */
 
     function crearTableroVacio() {
@@ -2036,10 +2113,12 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
                 ) {
 
                     const nuevaFila =
-                        fila + direccion[0] * i;
+                        fila +
+                        direccion[0] * i;
 
                     const nuevaColumna =
-                        columna + direccion[1] * i;
+                        columna +
+                        direccion[1] * i;
 
 
                     tablero[nuevaFila][nuevaColumna] =
@@ -2055,7 +2134,8 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
 
                 palabrasColocadas.push({
                     palabra: palabra,
-                    posiciones: posiciones
+                    posiciones: posiciones,
+                    encontrada: false
                 });
 
 
@@ -2096,6 +2176,7 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
                                 letras.length
                             )
                         ];
+
                 }
             }
         }
@@ -2130,17 +2211,23 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
                     document.createElement("div");
 
 
-                celda.classList.add("letra-sopa");
+                celda.classList.add(
+                    "letra-sopa"
+                );
 
                 celda.textContent =
                     tablero[fila][columna];
 
-                celda.dataset.fila = fila;
+                celda.dataset.fila =
+                    fila;
 
-                celda.dataset.columna = columna;
+                celda.dataset.columna =
+                    columna;
 
 
-                tableroSopa.appendChild(celda);
+                tableroSopa.appendChild(
+                    celda
+                );
             }
         }
     }
@@ -2165,7 +2252,9 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
             )
             .forEach(palabra => {
 
-                colocarPalabra(palabra);
+                colocarPalabra(
+                    palabra
+                );
 
             });
 
@@ -2178,54 +2267,35 @@ if (contenedorPalabras && tableroSopa && mensajeSopa) {
 
     iniciarSopa();
 
-}
-/* =========================
+
+    /* =========================
    SELECCIÓN DE PALABRAS
 ========================= */
 
 let seleccionando = false;
+let celdaInicial = null;
 let celdasSeleccionadas = [];
 
 
 /* =========================
-   LIMPIAR SELECCIÓN
+   LIMPIAR SELECCIÓN TEMPORAL
 ========================= */
 
 function limpiarSeleccion() {
 
-    celdasSeleccionadas.forEach(celda => {
+    tableroSopa
+        .querySelectorAll(
+            ".letra-sopa.seleccionada"
+        )
+        .forEach(celda => {
 
-        // NO borrar las palabras que ya fueron encontradas
-        if (!celda.classList.contains("encontrada")) {
-            celda.classList.remove("seleccionada");
-        }
+            celda.classList.remove(
+                "seleccionada"
+            );
 
-    });
+        });
 
     celdasSeleccionadas = [];
-}
-
-
-/* =========================
-   AGREGAR CELDA
-========================= */
-
-function agregarCelda(celda) {
-
-    if (!celda) return;
-
-    // Si esta letra ya pertenece a una palabra encontrada,
-    // no se puede volver a seleccionar
-    if (celda.classList.contains("encontrada")) {
-        return;
-    }
-
-    if (!celdasSeleccionadas.includes(celda)) {
-
-        celdasSeleccionadas.push(celda);
-
-        celda.classList.add("seleccionada");
-    }
 }
 
 
@@ -2237,28 +2307,195 @@ function obtenerCeldaDesdeEvento(evento) {
 
     let elemento;
 
+
     if (evento.touches) {
 
-        elemento = document.elementFromPoint(
-            evento.touches[0].clientX,
-            evento.touches[0].clientY
-        );
+        elemento =
+            document.elementFromPoint(
+                evento.touches[0].clientX,
+                evento.touches[0].clientY
+            );
 
     } else {
 
         elemento = evento.target;
+
     }
 
 
     if (
         elemento &&
-        elemento.classList.contains("letra-sopa")
+        elemento.classList.contains(
+            "letra-sopa"
+        )
     ) {
 
         return elemento;
+
     }
 
+
     return null;
+}
+
+
+/* =========================
+   OBTENER CELDAS DE UNA LÍNEA
+========================= */
+
+function obtenerLinea(
+    inicial,
+    final
+) {
+
+    const filaInicial =
+        Number(inicial.dataset.fila);
+
+    const columnaInicial =
+        Number(inicial.dataset.columna);
+
+    const filaFinal =
+        Number(final.dataset.fila);
+
+    const columnaFinal =
+        Number(final.dataset.columna);
+
+
+    const diferenciaFila =
+        filaFinal - filaInicial;
+
+    const diferenciaColumna =
+        columnaFinal - columnaInicial;
+
+
+    /*
+       Solo permitimos:
+
+       → horizontal
+       ↓ vertical
+       ↘ diagonal
+       ↗ diagonal
+    */
+
+
+    const esHorizontal =
+        diferenciaFila === 0;
+
+    const esVertical =
+        diferenciaColumna === 0;
+
+    const esDiagonal =
+        Math.abs(diferenciaFila) ===
+        Math.abs(diferenciaColumna);
+
+
+    if (
+        !esHorizontal &&
+        !esVertical &&
+        !esDiagonal
+    ) {
+
+        return [];
+
+    }
+
+
+    const pasoFila =
+        diferenciaFila === 0
+            ? 0
+            : diferenciaFila > 0
+                ? 1
+                : -1;
+
+
+    const pasoColumna =
+        diferenciaColumna === 0
+            ? 0
+            : diferenciaColumna > 0
+                ? 1
+                : -1;
+
+
+    const cantidad =
+        Math.max(
+            Math.abs(diferenciaFila),
+            Math.abs(diferenciaColumna)
+        );
+
+
+    const resultado = [];
+
+
+    for (
+        let i = 0;
+        i <= cantidad;
+        i++
+    ) {
+
+        const fila =
+            filaInicial +
+            pasoFila * i;
+
+        const columna =
+            columnaInicial +
+            pasoColumna * i;
+
+
+        const celda =
+            tableroSopa.querySelector(
+                `.letra-sopa[data-fila="${fila}"][data-columna="${columna}"]`
+            );
+
+
+        if (celda) {
+
+            resultado.push(celda);
+
+        }
+    }
+
+
+    return resultado;
+}
+
+
+/* =========================
+   MOSTRAR SELECCIÓN
+========================= */
+
+function actualizarSeleccion(
+    celdaFinal
+) {
+
+    if (!celdaInicial) return;
+
+
+    limpiarSeleccion();
+
+
+    const linea =
+        obtenerLinea(
+            celdaInicial,
+            celdaFinal
+        );
+
+
+    if (!linea.length) return;
+
+
+    celdasSeleccionadas =
+        linea;
+
+
+    celdasSeleccionadas.forEach(
+        celda => {
+
+            celda.classList.add(
+                "seleccionada"
+            );
+
+        }
+    );
 }
 
 
@@ -2268,40 +2505,73 @@ function obtenerCeldaDesdeEvento(evento) {
 
 function comenzarSeleccion(evento) {
 
+    if (
+        evento.type === "touchstart" &&
+        evento.cancelable
+    ) {
+
+        evento.preventDefault();
+
+    }
+
+
     const celda =
-        obtenerCeldaDesdeEvento(evento);
+        obtenerCeldaDesdeEvento(
+            evento
+        );
+
 
     if (!celda) return;
 
-    // No iniciar una selección sobre una letra
-    // que ya pertenece a una palabra encontrada
-    if (celda.classList.contains("encontrada")) {
-        return;
-    }
 
     seleccionando = true;
 
-    // Limpia solamente la selección temporal anterior
+    celdaInicial = celda;
+
     limpiarSeleccion();
 
-    agregarCelda(celda);
+
+    celda.classList.add(
+        "seleccionada"
+    );
+
+    celdasSeleccionadas = [
+        celda
+    ];
 }
 
 
 /* =========================
-   MOVER SOBRE EL TABLERO
+   MOVER SELECCIÓN
 ========================= */
 
 function moverSeleccion(evento) {
 
     if (!seleccionando) return;
 
+
+    if (
+        evento.type === "touchmove" &&
+        evento.cancelable
+    ) {
+
+        evento.preventDefault();
+
+    }
+
+
     const celda =
-        obtenerCeldaDesdeEvento(evento);
+        obtenerCeldaDesdeEvento(
+            evento
+        );
+
 
     if (!celda) return;
 
-    agregarCelda(celda);
+
+    actualizarSeleccion(
+        celda
+    );
 }
 
 
@@ -2313,9 +2583,14 @@ function terminarSeleccion() {
 
     if (!seleccionando) return;
 
+
     seleccionando = false;
 
+
     comprobarPalabra();
+
+
+    celdaInicial = null;
 }
 
 
@@ -2325,57 +2600,66 @@ function terminarSeleccion() {
 
 function comprobarPalabra() {
 
-    if (celdasSeleccionadas.length < 2) {
+    if (
+        celdasSeleccionadas.length < 2
+    ) {
 
         limpiarSeleccion();
 
         return;
+
     }
 
 
     const posicionesSeleccionadas =
-        celdasSeleccionadas.map(celda => {
-
-            return `${celda.dataset.fila}-${celda.dataset.columna}`;
-
-        });
+        celdasSeleccionadas.map(
+            celda =>
+                `${celda.dataset.fila}-${celda.dataset.columna}`
+        );
 
 
     const palabraEncontrada =
-        palabrasColocadas.find(objeto => {
+        palabrasColocadas.find(
+            objeto => {
 
-            // Si ya fue encontrada, ignorarla
-            if (objeto.encontrada) {
-                return false;
-            }
+                /*
+                   Ignorar palabras
+                   que ya encontramos.
+                */
 
-            const posiciones =
-                objeto.posiciones;
+                if (
+                    objeto.encontrada
+                ) {
 
+                    return false;
 
-            const mismaDireccion =
-                posiciones.every(
-                    posicion =>
-                        posicionesSeleccionadas
-                            .includes(posicion)
-                );
+                }
 
 
-            const mismaCantidad =
-                posiciones.length ===
-                posicionesSeleccionadas.length;
+                const posiciones =
+                    objeto.posiciones;
 
 
-            if (
-                mismaDireccion &&
-                mismaCantidad
-            ) {
+                if (
+                    posiciones.length !==
+                    posicionesSeleccionadas.length
+                ) {
+
+                    return false;
+
+                }
+
 
                 const directa =
                     posiciones.every(
-                        (posicion, indice) =>
+                        (
+                            posicion,
+                            indice
+                        ) =>
                             posicion ===
-                            posicionesSeleccionadas[indice]
+                            posicionesSeleccionadas[
+                                indice
+                            ]
                     );
 
 
@@ -2384,19 +2668,24 @@ function comprobarPalabra() {
                         .slice()
                         .reverse()
                         .every(
-                            (posicion, indice) =>
+                            (
+                                posicion,
+                                indice
+                            ) =>
                                 posicion ===
-                                posicionesSeleccionadas[indice]
+                                posicionesSeleccionadas[
+                                    indice
+                                ]
                         );
 
 
-                return directa || inversa;
+                return (
+                    directa ||
+                    inversa
+                );
+
             }
-
-
-            return false;
-
-        });
+        );
 
 
     if (palabraEncontrada) {
@@ -2407,31 +2696,60 @@ function comprobarPalabra() {
 
     } else {
 
-        // Si no era una palabra correcta,
-        // solamente desaparece la selección temporal
         limpiarSeleccion();
+
     }
 }
 
 
 /* =========================
-   MARCAR PALABRA
+   MARCAR PALABRA ENCONTRADA
 ========================= */
 
-function marcarPalabraEncontrada(objeto) {
+function marcarPalabraEncontrada(
+    objeto
+) {
 
-    celdasSeleccionadas.forEach(celda => {
+    /*
+       Marcamos únicamente las
+       posiciones exactas de la palabra.
+    */
 
-        celda.classList.remove(
-            "seleccionada"
-        );
+    objeto.posiciones.forEach(
+        posicion => {
 
-        celda.classList.add(
-            "encontrada"
-        );
+            const [
+                fila,
+                columna
+            ] = posicion.split("-");
 
-    });
 
+            const celda =
+                tableroSopa.querySelector(
+                    `.letra-sopa[data-fila="${fila}"][data-columna="${columna}"]`
+                );
+
+
+            if (celda) {
+
+                celda.classList.remove(
+                    "seleccionada"
+                );
+
+                celda.classList.add(
+                    "encontrada"
+                );
+
+            }
+
+        }
+    );
+
+
+    /*
+       Marcar también la palabra
+       de la lista.
+    */
 
     const elementoPalabra =
         document.querySelector(
@@ -2450,6 +2768,7 @@ function marcarPalabraEncontrada(objeto) {
 
     objeto.encontrada = true;
 
+
     celdasSeleccionadas = [];
 
 
@@ -2458,14 +2777,15 @@ function marcarPalabraEncontrada(objeto) {
 
 
 /* =========================
-   COMPROBAR LAS 40
+   COMPROBAR TODAS
 ========================= */
 
 function comprobarTodasEncontradas() {
 
     const encontradas =
         palabrasColocadas.filter(
-            objeto => objeto.encontrada
+            objeto =>
+                objeto.encontrada
         ).length;
 
 
@@ -2490,6 +2810,7 @@ function desbloquearMensajeSopa() {
         "mostrar"
     );
 
+
     setTimeout(() => {
 
         mensajeSopa.scrollIntoView({
@@ -2502,7 +2823,7 @@ function desbloquearMensajeSopa() {
 
 
 /* =========================
-   EVENTOS
+   EVENTOS PC
 ========================= */
 
 tableroSopa.addEventListener(
@@ -2510,10 +2831,12 @@ tableroSopa.addEventListener(
     comenzarSeleccion
 );
 
+
 tableroSopa.addEventListener(
     "mousemove",
     moverSeleccion
 );
+
 
 document.addEventListener(
     "mouseup",
@@ -2522,22 +2845,29 @@ document.addEventListener(
 
 
 /* =========================
-   EVENTOS PARA CELULAR
+   EVENTOS CELULAR
 ========================= */
 
 tableroSopa.addEventListener(
     "touchstart",
     comenzarSeleccion,
-    { passive: false }
+    {
+        passive: false
+    }
 );
+
 
 tableroSopa.addEventListener(
     "touchmove",
     moverSeleccion,
-    { passive: false }
+    {
+        passive: false
+    }
 );
+
 
 document.addEventListener(
     "touchend",
     terminarSeleccion
 );
+}
