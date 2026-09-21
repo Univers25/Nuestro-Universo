@@ -3951,3 +3951,256 @@ button {
         width: 100%;
     }
 }
+/* =========================
+   ESCENARIO DE EXPLORACIÓN
+========================= */
+
+.exploracion-contenido {
+    position: relative;
+    z-index: 2;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.exploracion-intro {
+    max-width: 650px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.exploracion-intro h3 {
+    color: #8fa8ff;
+    letter-spacing: 3px;
+}
+
+.zona-videojuego {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    margin-top: 35px;
+    overflow: hidden;
+    border: 1px solid rgba(120, 140, 255, .4);
+    border-radius: 15px;
+    background:
+        radial-gradient(circle at 20% 30%, #30245c 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, #172d5c 0%, transparent 30%),
+        #050713;
+}
+
+.zona-videojuego::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 45px 45px;
+    opacity: .35;
+}
+
+.pantalla-juego {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 450px;
+    padding: 30px;
+    text-align: center;
+}
+
+.pantalla-juego h3 {
+    color: #b5c4ff;
+    letter-spacing: 4px;
+    font-size: 26px;
+}
+
+.pantalla-juego p {
+    color: #b4b9d4;
+    margin-bottom: 30px;
+}
+/* ===== MUNDO DE EXPLORACIÓN ===== */
+
+.mundo-exploracion {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 30% 40%, #172b50, transparent 35%),
+        radial-gradient(circle at 80% 70%, #281642, transparent 35%),
+        #050814;
+    border: 1px solid rgba(120, 150, 220, 0.4);
+    border-radius: 15px;
+}
+
+/* Información superior */
+
+.informacion-juego {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #b8cfff;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* Astronauta */
+
+.personaje-explorador {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 5;
+    font-size: 32px;
+    transform: translate(-50%, -50%);
+    transition: left 0.08s linear, top 0.08s linear;
+}
+
+/* Planetas */
+
+.planeta {
+    position: absolute;
+    z-index: 2;
+    font-size: 48px;
+    user-select: none;
+}
+
+.planeta-uno {
+    top: 25%;
+    left: 20%;
+}
+
+.planeta-dos {
+    top: 55%;
+    left: 75%;
+}
+
+.planeta-tres {
+    top: 75%;
+    left: 35%;
+}
+
+/* Estaciones espaciales */
+
+.estacion-espacial {
+    position: absolute;
+    z-index: 4;
+    padding: 10px;
+    border: 1px solid #647cff;
+    border-radius: 50%;
+    background: rgba(20, 30, 70, 0.8);
+    cursor: pointer;
+    font-size: 25px;
+    transition: 0.3s;
+}
+
+.estacion-espacial:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px #758cff;
+}
+
+.estacion-uno {
+    top: 25%;
+    left: 65%;
+}
+
+.estacion-dos {
+    top: 70%;
+    left: 15%;
+}
+
+/* Controles inferiores */
+
+.controles-juego {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    color: #8ea5d8;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+/* ===== MISIÓN COMPLETADA ===== */
+
+.estacion-completada {
+    border-color: #70ffbd;
+    box-shadow: 0 0 20px #70ffbd;
+    color: #70ffbd;
+}
+
+.pantalla-mision-final {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: rgba(3, 7, 20, 0.94);
+    text-align: center;
+}
+
+.mensaje-final-juego {
+    max-width: 500px;
+    padding: 35px 25px;
+    border: 1px solid rgba(130, 160, 255, 0.6);
+    border-radius: 18px;
+    background: linear-gradient(
+        145deg,
+        rgba(20, 30, 70, 0.95),
+        rgba(35, 15, 60, 0.95)
+    );
+    box-shadow: 0 0 35px rgba(100, 120, 255, 0.25);
+}
+
+.etiqueta-final {
+    color: #91aaff;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.mensaje-final-juego h2 {
+    margin: 18px 0;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.mensaje-final-juego p {
+    color: #c6d0ed;
+    line-height: 1.7;
+}
+
+.frase-final {
+    margin: 25px 0;
+    color: #e2c9ff !important;
+    font-style: italic;
+}
+
+.mensaje-final-juego strong {
+    display: block;
+    margin-bottom: 25px;
+    color: #8dffc9;
+    letter-spacing: 2px;
+}
+
+.mensaje-final-juego button {
+    padding: 12px 22px;
+    border: 1px solid #91aaff;
+    border-radius: 20px;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.mensaje-final-juego button:hover {
+    background: rgba(120, 140, 255, 0.2);
+}
