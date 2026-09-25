@@ -1822,7 +1822,7 @@ if (
     "PIBBLE",
     "PATO",
 
-    "SATURNO",
+    "NEPTUNO",
     "UNIVERSO"
 ];
 

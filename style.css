@@ -4291,4 +4291,11 @@ button {
     }
 
 }
-
+.imagen-galaxy {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 25px auto 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
